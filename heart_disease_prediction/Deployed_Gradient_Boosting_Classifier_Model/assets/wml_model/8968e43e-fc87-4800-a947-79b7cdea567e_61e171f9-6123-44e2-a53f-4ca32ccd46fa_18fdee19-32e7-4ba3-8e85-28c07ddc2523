@@ -1,0 +1,62 @@
+{
+  "doc_type": "pipeline",
+  "pipelines": [{
+    "id": "7238cb20-ca38-4e9c-a3d3-b658108feb91",
+    "nodes": [{
+      "id": "automl",
+      "op": "wml-http-score",
+      "outputs": [{
+        "id": "automl"
+      }],
+      "parameters": {
+        "output_logs": true,
+        "input_file_separator": ",",
+        "stage_flag": true,
+        "optimization": {
+          "daub_include_only_estimators": ["RandomForestClassifierEstimator", "GradientBoostingClassifierEstimator", "SnapSVMClassifierEstimator"],
+          "learning_type": "classification",
+          "label": "condition",
+          "global_stage_include_batched_ensemble_estimators": [],
+          "max_num_daub_ensembles": 3,
+          "compute_pipeline_notebooks_flag": true,
+          "run_cognito_flag": true,
+          "daub_adaptive_subsampling_max_mem_usage": 15000000000,
+          "holdout_param": 0.1,
+          "cv_num_folds": 3,
+          "positive_label": 1,
+          "scorer_for_ranking": "accuracy"
+        },
+        "wml_status": {
+          "url": "https://eu-de.ml.cloud.ibm.com/v4_private/trainings"
+        },
+        "storage": {
+          "exchange": "training-prod",
+          "url": "amqps://ibm_cloud_6ce68031_2b09_4cdb_96ff_091699d8744d:b973866a68610c093c85f6df41a08c2f876907958045af626b2febd4b385f2e5@4e48a4c4-e17d-4c4c-ba49-5c693381d158.bpb68u2f0gvaqgd0n64g.private.databases.appdomain.cloud:31215"
+        },
+        "n_parallel_data_connections": 4,
+        "one_vs_all_file": true
+      },
+      "runtime_ref": "autoai",
+      "type": "execution_node"
+    }],
+    "runtime_ref": "hybrid"
+  }],
+  "primary_pipeline": "7238cb20-ca38-4e9c-a3d3-b658108feb91",
+  "runtimes": [{
+    "app_data": {
+      "wml_data": {
+        "hardware_spec": {
+          "id": "a6c4923b-b8e4-444c-9f43-8a7ec3020110",
+          "name": "L"
+        },
+        "software_spec": {
+          "name": "autoai-kb_rt22.2-py3.10"
+        }
+      }
+    },
+    "id": "autoai",
+    "name": "auto_ai.kb",
+    "version": "3.1.212"
+  }],
+  "version": "2.0"
+}
