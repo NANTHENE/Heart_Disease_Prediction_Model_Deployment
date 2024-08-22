@@ -19,7 +19,7 @@ A simple web application which uses Machine Learning algorithm to predict the he
 
 ### Requirements
 
-- In the `app.py` script replace the <API-Key> and <Deployment_ID> with your IBM Cloud account API_Key and your model's deployment id respectively.
+- In the `app.py` script replace the '<API-Key>' and '<Deployment_ID>' with your IBM Cloud account API_Key and your model's deployment id respectively.
 - replace the <Access_Token> with the access token you generate using the API Key
 
 ### Run 
